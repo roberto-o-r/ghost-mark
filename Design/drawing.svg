@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.95623098"
+     inkscape:cx="302.22823"
+     inkscape:cy="412.55723"
+     inkscape:window-width="2400"
+     inkscape:window-height="1261"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"><path
+       d="M 11.84295,30.762475 V 48.40127 h 0.112496 c 0.540007,3.730662 3.726158,6.61457 7.604572,6.61457 2.588488,0 4.572816,-0.919417 5.891322,-2.588499 a 8.7973763,8.7973763 0 0 0 12.497138,-0.03333 c 1.32516,1.680082 3.316154,2.61941 5.864904,2.61941 4.255408,0 7.717068,-3.46166 7.717068,-7.717068 V 30.759976 c 0,-10.940479 -8.901067,-19.843708 -19.843708,-19.843708 -10.942725,0 -19.843708,8.903229 -19.843708,19.843708 z m 13.229139,2.204829 c -2.431994,0 -4.409741,-1.977748 -4.409741,-4.409741 0,-2.431909 1.977747,-4.409657 4.409741,-4.409657 2.431908,0 4.409656,1.977748 4.409656,4.409657 0,2.431993 -1.977748,4.409741 -4.409656,4.409741 z m 13.229138,-8.819398 c 2.431909,0 4.409657,1.977748 4.409657,4.409657 0,2.431993 -1.977748,4.409741 -4.409657,4.409741 -2.431993,0 -4.409741,-1.977748 -4.409741,-4.409741 0,-2.431909 1.977748,-4.409657 4.409741,-4.409657 z"
+       id="path1"
+       style="fill:#000000;stroke-width:2.20485" /><text
+       xml:space="preserve"
+       style="font-size:19.3724px;font-family:'Bauhaus 93';-inkscape-font-specification:'Bauhaus 93, ';fill:#000000;stroke:#1a1a1a;stroke-width:0"
+       x="64.393066"
+       y="37.875141"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Silkscreen;-inkscape-font-specification:Silkscreen;stroke-width:0"
+         x="64.393066"
+         y="37.875141">GhostMark</tspan></text></g></svg>
