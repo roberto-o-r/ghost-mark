@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghost_mark/features/editor/presentation/editor_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +10,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      home: const EditorScreen(),
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: Colors.black)),
     );
   }
 }
