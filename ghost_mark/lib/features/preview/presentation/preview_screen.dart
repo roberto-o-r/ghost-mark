@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
-class EditorScreen extends StatelessWidget {
-  const EditorScreen({super.key});
+class PreviewScreen extends StatelessWidget {
+  const PreviewScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +16,7 @@ class EditorScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 2.0),
               ),
-              child: const TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                expands: true,
-                textAlignVertical: TextAlignVertical.top,
-                decoration: InputDecoration(
-                  border: InputBorder.none, // Remove the default border
-                ),
-              ),
+              child: Markdown(data: '# Hello World\nThis is a preview of your markdown content.'),
             ),
           ),
         ],

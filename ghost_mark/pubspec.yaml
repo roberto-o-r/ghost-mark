@@ -9,7 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_hooks: ^0.21.2
+  flutter_markdown_plus: ^1.0.0+1
   flutter_native_splash: ^2.4.4
+  gpt_markdown: ^1.0.9
 
 dev_dependencies:
   flutter_test:
