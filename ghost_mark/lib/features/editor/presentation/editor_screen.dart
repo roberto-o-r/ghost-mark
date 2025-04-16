@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ghost_mark/features/editor/application/document_notifier.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class EditorScreen extends StatelessWidget {
+class EditorScreen extends HookConsumerWidget {
   const EditorScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final document = ref.watch(documentNotifierProvider);
+    final content = useState(document.value?.content ?? '');
+    final TextEditingController contentController =
+        useTextEditingController(text: content.value);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -15,14 +23,15 @@ class EditorScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 2.0),
               ),
-              child: const TextField(
+              child: TextField(
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 expands: true,
                 textAlignVertical: TextAlignVertical.top,
-                decoration: InputDecoration(
-                  border: InputBorder.none, // Remove the default border
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
                 ),
+                controller: contentController,
               ),
             ),
           ),
