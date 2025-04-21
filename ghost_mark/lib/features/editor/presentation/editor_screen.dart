@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ghost_mark/features/editor/application/document_notifier.dart';
+import 'package:ghost_mark/features/editor/data/document.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class EditorScreen extends HookConsumerWidget {
@@ -9,9 +10,21 @@ class EditorScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final document = ref.watch(documentNotifierProvider);
-    final content = useState(document.value?.content ?? '');
+    final content = useState('');
+    content.value = document.value?.content ?? '';
+    final debouncedContent =
+        useDebounced(content.value, const Duration(seconds: 1));
     final TextEditingController contentController =
         useTextEditingController(text: content.value);
+
+    useEffect(() {
+      if (debouncedContent != null) {
+        ref
+            .read(documentNotifierProvider.notifier)
+            .updateDocument(Document(content: debouncedContent));
+      }
+      return null;
+    }, [debouncedContent]);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -32,6 +45,9 @@ class EditorScreen extends HookConsumerWidget {
                   border: InputBorder.none,
                 ),
                 controller: contentController,
+                onChanged: (value) {
+                  content.value = value;
+                },
               ),
             ),
           ),
