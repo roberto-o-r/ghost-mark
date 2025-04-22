@@ -10,21 +10,8 @@ class EditorScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final document = ref.watch(documentNotifierProvider);
-    final content = useState('');
-    content.value = document.value?.content ?? '';
-    final debouncedContent =
-        useDebounced(content.value, const Duration(seconds: 1));
-    final TextEditingController contentController =
-        useTextEditingController(text: content.value);
-
-    useEffect(() {
-      if (debouncedContent != null) {
-        ref
-            .read(documentNotifierProvider.notifier)
-            .updateDocument(Document(content: debouncedContent));
-      }
-      return null;
-    }, [debouncedContent]);
+    final contentController =
+        useTextEditingController(text: document.value?.content ?? '');
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -46,7 +33,9 @@ class EditorScreen extends HookConsumerWidget {
                 ),
                 controller: contentController,
                 onChanged: (value) {
-                  content.value = value;
+                  ref
+                      .read(documentNotifierProvider.notifier)
+                      .updateDocument(Document(content: value));
                 },
               ),
             ),
