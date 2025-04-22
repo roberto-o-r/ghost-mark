@@ -10,8 +10,8 @@ class EditorScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final document = ref.watch(documentNotifierProvider);
-    final contentController =
-        useTextEditingController(text: document.value?.content ?? '');
+    final contentController = useTextEditingController();
+    contentController.text = document.value?.content ?? '';
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
