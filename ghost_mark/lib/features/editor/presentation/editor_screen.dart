@@ -13,7 +13,9 @@ class EditorScreen extends HookConsumerWidget {
     final contentController = useTextEditingController();
 
     useEffect(() {
-      contentController.text = document.value?.content ?? '';
+      if (document.value != null && contentController.text.isEmpty) {
+        contentController.text = document.value?.content ?? '';
+      }
       return null;
     }, [document.value?.content]);
 
