@@ -11,16 +11,11 @@ class EditorScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final document = ref.watch(documentNotifierProvider);
     final contentController = useTextEditingController();
-    contentController.text = document.value?.content ?? '';
 
     useEffect(() {
-      final updateDocument = ref.watch(documentNotifierProvider.notifier).updateDocument;
-      return () {
-        updateDocument(
-          Document(content: contentController.text),
-        );
-      };
-    }, []);
+      contentController.text = document.value?.content ?? '';
+      return null;
+    }, [document.value?.content]);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -41,6 +36,11 @@ class EditorScreen extends HookConsumerWidget {
                   border: InputBorder.none,
                 ),
                 controller: contentController,
+                onChanged: (value) {
+                  ref.read(documentNotifierProvider.notifier).updateDocument(
+                        Document(content: value),
+                      );
+                },
               ),
             ),
           ),
