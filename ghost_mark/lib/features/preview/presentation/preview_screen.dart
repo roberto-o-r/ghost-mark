@@ -10,7 +10,8 @@ class PreviewScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final document = ref.watch(documentNotifierProvider);
-    final content = useState(document.value?.content ?? '');
+    final content = useState('');
+    content.value = document.value?.content ?? '';
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
