@@ -16,3 +16,19 @@ Designed with simplicity in mind, GhostMark lets you focus on your words—not t
 - Simple Interface – A minimal UI that keeps you in the flow.
 
 Whether you're a technical writer, content creator, or casual note-taker, GhostMark helps you stay productive wherever you are.
+
+# Release Notes
+
+## Version 1 (1.0.0)
+<en-US>
+GhostMark v1.0.0 – Initial Release
+Welcome to the first official release of GhostMark!
+- Markdown Editing
+Write and format your content using standard Markdown syntax.
+- Mobile-Optimized Interface
+A distraction-free environment designed specifically for writing on the go.
+- Autosave
+Your work is automatically saved as you type—no manual actions needed.
+- Local Storage
+All your writing stays on your device, with no cloud required.
+</en-US>
