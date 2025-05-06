@@ -25,6 +25,16 @@ Riverpod is configured to use code generation, run the following command to run 
 flutter pub run build_runner build
 ```
 
+## Troubleshoot
+Google Play Error: "This App Bundle contains native code, and you've not uploaded debug symbols. We recommend you upload a symbol file to make your crashes and ANRs easier to analyze and debug."
+1. Go to [YOUR_PROJECT]\build\app\intermediates\merged_native_libs\release\out\lib
+2. Note that 3 folders exist inside
+- arm64-v8a
+- armeabi-v7a
+- x86_64
+3. Select these 3 folders and create a .zip file. The name doesn't matter.
+4. Upload this new *.zip file as a Symbol File.
+
 ## Contributing
 Contributions are welcome! If you'd like to contribute, please follow these steps:
 1. Fork the repository.
