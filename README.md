@@ -47,3 +47,6 @@ GhostMark is licensed under the MIT License. See the [LICENSE](LICENSE) file for
 
 ## Contact
 For any questions or feedback, feel free to open an issue or reach out!
+
+## Issues
+https://github.com/miguelpruivo/flutter_file_picker/issues/1885
