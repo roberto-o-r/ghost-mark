@@ -50,7 +50,8 @@ class EditorScreen extends HookConsumerWidget {
       final data = Uint8List.fromList(contentController.text.codeUnits);
 
       final result = await FilePicker.platform.saveFile(
-        bytes: data
+        bytes: data,
+        allowedExtensions: ['md'],
       );
 
       if (result != null) {
