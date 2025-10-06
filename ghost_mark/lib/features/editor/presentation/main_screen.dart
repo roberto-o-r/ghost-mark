@@ -7,11 +7,6 @@ import 'package:ghost_mark/shared/custom_app_bar.dart';
 class MainScreen extends HookWidget {
   const MainScreen({super.key});
 
-  static const List<Widget> screens = [
-    EditorScreen(),
-    PreviewScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final currentIndex = useState(0);
@@ -20,9 +15,25 @@ class MainScreen extends HookWidget {
       currentIndex.value = index;
     }
 
+  void openFile() => EditorScreen.openFileAction?.call(context);
+  void saveFile() => EditorScreen.saveFileAction?.call(context);
+  void clearFile() => EditorScreen.clearFileAction?.call(context);
+
     return Scaffold(
-      appBar: const CustomAppBar(),
-      body: screens[currentIndex.value],
+      appBar: currentIndex.value == 0
+          ? CustomAppBar(
+              onOpen: openFile,
+              onSave: saveFile,
+              onClear: clearFile,
+            )
+          : const CustomAppBar(),
+      body: currentIndex.value == 0
+          ? EditorScreen(
+              provideOpen: (fn) => EditorScreen.openFileAction = fn,
+              provideSave: (fn) => EditorScreen.saveFileAction = fn,
+              provideClear: (fn) => EditorScreen.clearFileAction = fn,
+            )
+          : const PreviewScreen(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex.value,
         onTap: onIndexChanged,
