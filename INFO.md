@@ -19,6 +19,17 @@ Whether you're a technical writer, content creator, or casual note-taker, GhostM
 
 # Release Notes
 
+## Version 3 1.1.0
+<en-US>
+GhostMark v1.1.0 – Now with Open and Save
+This update makes GhostMark even more practical for your writing flow.
+- Open and Save Files
+Easily open existing Markdown files or save your current work to any directory on your device. Perfect for managing drafts or syncing with other tools.
+- Improved Stability
+Minor fixes and under-the-hood improvements for a smoother writing experience.
+Keep writing freely, your way.
+</en-US>
+
 ## Version 1 (1.0.0)
 <en-US>
 GhostMark v1.0.0 – Initial Release
