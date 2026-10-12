@@ -3,7 +3,7 @@
 - **Date:** 2026-10-12 to 2026-10-12
 - **Status:** Completed, awaiting PR merge and store upload of 1.1.1+4
 - **Area:** engineering
-- **PR / release:** branch `fix/utf8-save-open` (PR link below once opened); app version 1.1.1+4
+- **PR / release:** [PR #4](https://github.com/roberto-o-r/ghost-mark/pull/4); app version 1.1.1+4
 
 ## Context
 GhostMark 1.1.0+3 is a ~360-line Flutter Markdown editor: one autosaved document in SharedPreferences, Edit/View tabs, and Open/Save/Clear actions. No tests, analytics or crash reporting; no store metrics available in the repo. Investigation found:
