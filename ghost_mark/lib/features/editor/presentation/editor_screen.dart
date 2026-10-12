@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ghost_mark/features/editor/application/document_notifier.dart';
 import 'package:ghost_mark/features/editor/data/document.dart';
+import 'package:ghost_mark/features/editor/data/markdown_codec.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 typedef FileAction = void Function(BuildContext context);
@@ -33,29 +33,67 @@ class EditorScreen extends HookConsumerWidget {
       return null;
     }, [document.value?.content]);
 
+    Future<bool> confirmReplace(BuildContext context) async {
+      if (contentController.text.isEmpty) return true;
+      final shouldReplace = await showDialog<bool>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Replace Document'),
+          content: const Text(
+              'Opening this file will replace the current document. This cannot be undone.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(false),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(true),
+              child: const Text('Replace'),
+            ),
+          ],
+        ),
+      );
+      return shouldReplace == true;
+    }
+
     Future<void> openFile(BuildContext context) async {
+      final messenger = ScaffoldMessenger.of(context);
       final result = await FilePicker.platform
           .pickFiles(type: FileType.custom, allowedExtensions: ['md']);
-      if (result != null && result.files.single.path != null) {
-        final file = File(result.files.single.path!);
-        final content = await file.readAsString();
-        contentController.text = content;
-        ref
-            .read(documentNotifierProvider.notifier)
-            .updateDocument(Document(content: content));
+      final path = result?.files.single.path;
+      if (path == null) return;
+
+      final String content;
+      try {
+        content = decodeMarkdown(await File(path).readAsBytes());
+      } on FormatException {
+        messenger.showSnackBar(
+          const SnackBar(content: Text('Could not open file: not UTF-8 text.')),
+        );
+        return;
+      } on FileSystemException {
+        messenger.showSnackBar(
+          const SnackBar(content: Text('Could not read file.')),
+        );
+        return;
       }
+
+      if (!context.mounted || !await confirmReplace(context)) return;
+      contentController.text = content;
+      ref
+          .read(documentNotifierProvider.notifier)
+          .updateDocument(Document(content: content));
     }
 
     Future<void> saveFile(BuildContext context) async {
-      final data = Uint8List.fromList(contentController.text.codeUnits);
-
+      final messenger = ScaffoldMessenger.of(context);
       final result = await FilePicker.platform.saveFile(
-        bytes: data,
+        bytes: encodeMarkdown(contentController.text),
         allowedExtensions: ['md'],
       );
 
       if (result != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           const SnackBar(content: Text('File saved successfully!')),
         );
       }
@@ -80,7 +118,7 @@ class EditorScreen extends HookConsumerWidget {
           ],
         ),
       );
-      if (shouldClear == true) {
+      if (shouldClear == true && context.mounted) {
         contentController.clear();
         ref.read(documentNotifierProvider.notifier).updateDocument(
               Document(content: ''),

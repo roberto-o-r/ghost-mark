@@ -19,6 +19,14 @@ Whether you're a technical writer, content creator, or casual note-taker, GhostM
 
 # Release Notes
 
+## Version 4 (1.1.1)
+<en-US>
+GhostMark v1.1.1 – Safer Open and Save
+- Fixed: saved files now keep accented letters, symbols and emoji intact. Previously, non-English characters could be garbled when saving.
+- Opening a file that isn't valid text now shows a clear message instead of doing nothing.
+- GhostMark now asks before an opened file replaces your current document.
+</en-US>
+
 ## Version 3 1.1.0
 <en-US>
 GhostMark v1.1.0 – Now with Open and Save
