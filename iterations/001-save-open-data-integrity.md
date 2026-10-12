@@ -40,14 +40,15 @@ GhostMark 1.1.0+3 is a ~360-line Flutter Markdown editor: one autosaved document
 - Regression check: with the old `editor_screen.dart`, 3 of 4 widget tests fail (Save encoding, invalid-file message, replace confirmation), so the tests catch the original bugs.
 - `flutter analyze`: no issues (was 2).
 - `flutter build apk --debug` and `flutter build ios --release --no-codesign`: succeed.
-- Deviation: `flutter build appbundle --release` compiled but failed at signing because `android/key.properties` (release keystore) is not on this machine. Signed build must be done by the owner.
-- Not done: hands-on test on a real device with the native file pickers; the tests use a fake picker.
+- Signed `flutter build appbundle --release` (1.1.1+4) succeeded once the owner created the gitignored `android/key.properties`. Bundle certificate SHA-1 `39:5D:0B:7D:B8:6C:91:52:7C:1C:4B:4D:85:67:9A:3E:66:CC:E1:A0`; owner confirmed it matches the Play Console upload key.
+- Device test on an A059P phone (Android 16), 2026-10-12, using the `.debug` variant so the Play-installed 1.1.0 and its document stayed untouched. Owner reported all passing: non-ASCII Save→Open round trip, file readable in another app, replace confirmation (Cancel and Replace), and a file saved by Play 1.1.0 shows "Could not open file: not UTF-8 text."
+- Note: `flutter install` uninstalls the previous `.debug` app first, which deletes its local document. Warn before reinstalling a debug build next time.
 
 ## Release
 Not released. Remaining, all for the owner:
-1. Review and merge the PR.
-2. On a machine with the keystore: `flutter build appbundle --release`, upload 1.1.1+4 to Google Play with the `INFO.md` notes (and iOS if published there).
-3. Before uploading, smoke test on a device: type `Café ✍️`, Save, reopen the file in GhostMark and in another app. Accents and emoji should be intact.
+1. Done: PR #4 merged after the device test.
+2. Owner: upload the signed `app-release.aab` (1.1.1+4) to Google Play with the `INFO.md` notes. Android only; the iOS project has never been set up for the App Store.
+3. After it goes live: tag `v1.1.1` and mark this record Completed and released.
 
 ## Results
 - Fact: save→open round trip of non-ASCII text is now exact in tests; previously it produced replacement characters and an uncaught exception.
