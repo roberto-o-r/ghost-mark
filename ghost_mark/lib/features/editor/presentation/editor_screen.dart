@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ghost_mark/features/editor/application/document_notifier.dart';
 import 'package:ghost_mark/features/editor/data/document.dart';
 import 'package:ghost_mark/features/editor/data/markdown_codec.dart';
+import 'package:ghost_mark/features/editor/presentation/formatting_toolbar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 typedef FileAction = void Function(BuildContext context);
@@ -25,6 +26,7 @@ class EditorScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final document = ref.watch(documentNotifierProvider);
     final contentController = useTextEditingController();
+    final focusNode = useFocusNode();
 
     useEffect(() {
       if (document.value != null && contentController.text.isEmpty) {
@@ -129,6 +131,14 @@ class EditorScreen extends HookConsumerWidget {
       }
     }
 
+    void format(Formatter formatter) {
+      contentController.value = formatter(contentController.value);
+      focusNode.requestFocus();
+      ref.read(documentNotifierProvider.notifier).updateDocument(
+            Document(content: contentController.text),
+          );
+    }
+
     // Provide the open/save actions to the parent
     provideOpen?.call(openFile);
     provideSave?.call(saveFile);
@@ -153,6 +163,7 @@ class EditorScreen extends HookConsumerWidget {
                   border: InputBorder.none,
                 ),
                 controller: contentController,
+                focusNode: focusNode,
                 onChanged: (value) {
                   ref.read(documentNotifierProvider.notifier).updateDocument(
                         Document(content: value),
@@ -161,6 +172,7 @@ class EditorScreen extends HookConsumerWidget {
               ),
             ),
           ),
+          FormattingToolbar(onFormat: format),
         ],
       ),
     );

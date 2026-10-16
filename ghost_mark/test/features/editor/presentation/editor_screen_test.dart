@@ -138,4 +138,60 @@ void main() {
     await tester.pumpAndSettle();
     expect(editorText(tester), sample);
   });
+
+  group('formatting toolbar', () {
+    TextEditingController controller(WidgetTester tester) =>
+        tester.widget<TextField>(find.byType(TextField)).controller!;
+
+    testWidgets('Bold wraps the selection and autosaves', (tester) async {
+      await pumpApp(tester);
+      await tester.enterText(find.byType(TextField), 'say hi');
+      controller(tester).selection =
+          const TextSelection(baseOffset: 4, extentOffset: 6);
+
+      await tester.tap(find.byTooltip('Bold'));
+      await tester.pumpAndSettle();
+
+      expect(editorText(tester), 'say **hi**');
+      final prefs = await SharedPreferences.getInstance();
+      expect(jsonDecode(prefs.getString('document')!)['content'],
+          'say **hi**');
+    });
+
+    testWidgets('keeps the editor focused so typing continues',
+        (tester) async {
+      await pumpApp(tester);
+      await tester.enterText(find.byType(TextField), 'Title');
+
+      await tester.tap(find.byTooltip('Heading'));
+      await tester.pumpAndSettle();
+
+      expect(editorText(tester), '# Title');
+      final field = tester.widget<TextField>(find.byType(TextField));
+      expect(field.focusNode!.hasFocus, isTrue);
+      expect(controller(tester).selection.baseOffset, '# Title'.length);
+    });
+
+    testWidgets('formats at the end when the editor was never focused',
+        (tester) async {
+      await pumpApp(tester);
+
+      await tester.tap(find.byTooltip('Checklist'));
+      await tester.pumpAndSettle();
+
+      expect(editorText(tester), '- [ ] ');
+      final field = tester.widget<TextField>(find.byType(TextField));
+      expect(field.focusNode!.hasFocus, isTrue);
+    });
+
+    testWidgets('is not shown on the View tab', (tester) async {
+      await pumpApp(tester);
+      expect(find.byTooltip('Bold'), findsOneWidget);
+
+      await tester.tap(find.text('View'));
+      await tester.pumpAndSettle();
+
+      expect(find.byTooltip('Bold'), findsNothing);
+    });
+  });
 }

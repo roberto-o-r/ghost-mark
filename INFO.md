@@ -19,6 +19,13 @@ Whether you're a technical writer, content creator, or casual note-taker, GhostM
 
 # Release Notes
 
+## Version 5 (1.2.0)
+<en-US>
+GhostMark v1.2.0 – Formatting Toolbar
+- New: a formatting toolbar right above the keyboard. Add headings, bold, italic, lists, checklists, links and code with one tap, no symbol hunting.
+- Select text first to format it, or tap a button to start formatting where you're typing. Tap a button again to remove its formatting (except Link).
+</en-US>
+
 ## Version 4 (1.1.1)
 <en-US>
 GhostMark v1.1.1 – Safer Open and Save
