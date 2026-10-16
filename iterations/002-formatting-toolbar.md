@@ -1,9 +1,9 @@
 # Iteration 002: Markdown formatting toolbar
 
 - **Date:** 2026-10-16 to 2026-10-16
-- **Status:** Completed, awaiting Play upload of 1.2.0+5
+- **Status:** Completed and released
 - **Area:** product
-- **PR / release:** [PR #5](https://github.com/roberto-o-r/ghost-mark/pull/5); app version 1.2.0+5
+- **PR / release:** [PR #5](https://github.com/roberto-o-r/ghost-mark/pull/5); app version 1.2.0+5, tag `v1.2.0`
 
 ## Context
 GhostMark 1.1.1+4: one autosaved document, Edit/View tabs, Open/Save/Clear. 8 tests pass, analyzer clean. The editor is a bare `TextField`, so every `#`, `*`, `[`, `` ` `` means switching to the symbol keyboard. The store listing sells "Mobile-First Design" and "Markdown Support". No analytics, crash reporting or Play Console data available to this iteration. Iteration 001's Play upload of 1.1.1+4 is still unconfirmed (no `v1.1.1` tag).
@@ -40,11 +40,11 @@ GhostMark 1.1.1+4: one autosaved document, Edit/View tabs, Open/Save/Clear. 8 te
 - Device test on the A059P phone (Android 16), 2026-10-16, `.debug` variant installed with `flutter run`. That upgraded the app in place and kept its saved document, unlike `flutter install`. The Play-installed app was not touched. Owner reported everything passing: each button with and without a selection, the keyboard staying open, list markers replacing each other, the text persisting after a restart, and the View tab rendering without the toolbar.
 
 ## Release
-Not released. Remaining, all for the owner:
+Released: 1.2.0+5 live on Google Play 2026-10-16 (owner confirmed). Tagged `v1.2.0`. Steps taken:
 1. Done: device test passed (see Validation).
 2. Done: PR #5 merged.
-3. Owner: build the signed `flutter build appbundle --release` (1.2.0+5) and upload it to Google Play with the `INFO.md` notes. If 1.1.1+4 (iteration 001) never shipped, 1.2.0+5 supersedes it and includes its fixes; use both sets of notes.
-4. Once it's live, tag `v1.2.0` (and `v1.1.1` if that shipped) and mark this record Completed and released.
+3. Done: built the signed release bundle (`flutter build appbundle --release`, 1.2.0+5). Certificate SHA-1 `39:5D:0B:7D:B8:6C:91:52:7C:1C:4B:4D:85:67:9A:3E:66:CC:E1:A0` (the Play upload key), version name 1.2.0. Owner uploaded it with the `INFO.md` notes.
+4. Done: tagged `v1.2.0`.
 
 ## Results
 - Fact: every Markdown construct the toolbar covers can now be entered with one tap, and the transforms are verified by tests.
