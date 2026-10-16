@@ -1,7 +1,7 @@
 # Iteration 002: Markdown formatting toolbar
 
 - **Date:** 2026-10-16 to 2026-10-16
-- **Status:** Completed, awaiting owner device test, PR merge and Play upload of 1.2.0+5
+- **Status:** Completed, awaiting Play upload of 1.2.0+5
 - **Area:** product
 - **PR / release:** [PR #5](https://github.com/roberto-o-r/ghost-mark/pull/5); app version 1.2.0+5
 
@@ -37,13 +37,13 @@ GhostMark 1.1.1+4: one autosaved document, Edit/View tabs, Open/Save/Clear. 8 te
 - `flutter analyze`: no issues.
 - `flutter build apk --debug`: succeeds.
 - iOS simulator (iPhone 17 Pro, debug, software keyboard): with the editor focused, the toolbar sits directly above the keyboard and all 7 buttons fit without scrolling. Taps on the buttons weren't driven on the simulator; that behaviour is covered by the widget tests only.
-- Not yet done: a real Android device test (planned for the owner, as in iteration 001). Use the `.debug` variant, and note that `flutter install` uninstalls the previous `.debug` app and its document.
+- Device test on the A059P phone (Android 16), 2026-10-16, `.debug` variant installed with `flutter run`. That upgraded the app in place and kept its saved document, unlike `flutter install`. The Play-installed app was not touched. Owner reported everything passing: each button with and without a selection, the keyboard staying open, list markers replacing each other, the text persisting after a restart, and the View tab rendering without the toolbar.
 
 ## Release
 Not released. Remaining, all for the owner:
-1. Device-test the PR build on Android: each button with and without a selection, the keyboard staying open after a tap, and the text persisting after restarting the app.
-2. Merge the PR.
-3. Build the signed `flutter build appbundle --release` (1.2.0+5) and upload it to Google Play with the `INFO.md` notes. If 1.1.1+4 (iteration 001) never shipped, 1.2.0+5 supersedes it and includes its fixes; use both sets of notes.
+1. Done: device test passed (see Validation).
+2. Done: PR #5 merged.
+3. Owner: build the signed `flutter build appbundle --release` (1.2.0+5) and upload it to Google Play with the `INFO.md` notes. If 1.1.1+4 (iteration 001) never shipped, 1.2.0+5 supersedes it and includes its fixes; use both sets of notes.
 4. Once it's live, tag `v1.2.0` (and `v1.1.1` if that shipped) and mark this record Completed and released.
 
 ## Results
