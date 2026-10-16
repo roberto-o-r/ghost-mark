@@ -3,7 +3,7 @@
 - **Date:** 2026-10-16 to 2026-10-16
 - **Status:** Completed, awaiting owner device test, PR merge and Play upload of 1.2.0+5
 - **Area:** product
-- **PR / release:** PR (link below); app version 1.2.0+5
+- **PR / release:** [PR #5](https://github.com/roberto-o-r/ghost-mark/pull/5); app version 1.2.0+5
 
 ## Context
 GhostMark 1.1.1+4: one autosaved document, Edit/View tabs, Open/Save/Clear. 8 tests pass, analyzer clean. The editor is a bare `TextField`, so every `#`, `*`, `[`, `` ` `` means switching to the symbol keyboard. The store listing sells "Mobile-First Design" and "Markdown Support". No analytics, crash reporting or Play Console data available to this iteration. Iteration 001's Play upload of 1.1.1+4 is still unconfirmed (no `v1.1.1` tag).
@@ -53,5 +53,5 @@ Not released. Remaining, all for the owner:
 ## Follow-up
 - **Metrics to monitor:** Play Console average rating and new reviews (mentions of formatting, toolbar or keyboard), 1-day/7-day retention and uninstall rate, compared before and after the 1.2.0 rollout; crash/ANR rate.
 - **Review date:** 2026-11-20
-- **Risks and limitations:** no baseline, so the impact can't be attributed cleanly. Link can't be toggled off. The toolbar takes about 48 px from the editor on small screens. Operations are not grouped for undo (the system text undo may treat a toolbar edit unevenly).
+- **Risks and limitations:** no baseline, so the impact can't be attributed cleanly. Link can't be toggled off. The toolbar takes about 48 px from the editor on small screens. System text undo after a toolbar edit was not tested.
 - **Ideas for future iterations:** Play Console baseline and review mining (option 2, needed for measuring this one); preview polish (tappable links, selectable text, dark mode); undo snackbar for Clear/Open; README/listing refresh including a screenshot of the toolbar; numbered lists and quotes if reviews ask for them.
