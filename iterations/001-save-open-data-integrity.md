@@ -1,7 +1,7 @@
 # Iteration 001: Save/Open data integrity
 
 - **Date:** 2026-10-12 to 2026-10-12
-- **Status:** Completed, awaiting PR merge and store upload of 1.1.1+4
+- **Status:** Completed and released (shipped in 1.2.0+5)
 - **Area:** engineering
 - **PR / release:** [PR #4](https://github.com/roberto-o-r/ghost-mark/pull/4); app version 1.1.1+4
 
@@ -45,7 +45,7 @@ GhostMark 1.1.0+3 is a ~360-line Flutter Markdown editor: one autosaved document
 - Note: `flutter install` uninstalls the previous `.debug` app first, which deletes its local document. Warn before reinstalling a debug build next time.
 
 ## Release
-Not released. Remaining, all for the owner:
+Released 2026-10-16 as part of 1.2.0+5 (tag `v1.2.0`, see [iteration 002](002-formatting-toolbar.md)). Whether 1.1.1+4 went live on its own was not confirmed, so it was not tagged. Original steps:
 1. Done: PR #4 merged after the device test.
 2. Owner: upload the signed `app-release.aab` (1.1.1+4) to Google Play with the `INFO.md` notes. Android only; the iOS project has never been set up for the App Store.
 3. After it goes live: tag `v1.1.1` and mark this record Completed and released.
