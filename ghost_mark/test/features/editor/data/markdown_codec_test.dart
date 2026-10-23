@@ -25,4 +25,9 @@ void main() {
     final bytes = Uint8List.fromList('Café'.codeUnits);
     expect(() => decodeMarkdown(bytes), throwsFormatException);
   });
+
+  test('default save name is a timestamped .md file', () {
+    expect(defaultSaveFileName(DateTime(2026, 3, 4, 5, 6, 7)),
+        'ghostmark-2026-03-04-050607.md');
+  });
 }

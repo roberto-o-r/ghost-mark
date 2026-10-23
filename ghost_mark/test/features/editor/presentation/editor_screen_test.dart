@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class FakeFilePicker extends FilePicker {
   String? pickedPath;
   Uint8List? savedBytes;
+  String? savedFileName;
 
   @override
   Future<FilePickerResult?> pickFiles({
@@ -46,6 +47,7 @@ class FakeFilePicker extends FilePicker {
     bool lockParentWindow = false,
   }) async {
     savedBytes = bytes;
+    savedFileName = fileName;
     return '/saved.md';
   }
 }
@@ -96,6 +98,16 @@ void main() {
 
     expect(utf8.decode(picker.savedBytes!), sample);
     expect(find.text('File saved successfully!'), findsOneWidget);
+  });
+
+  testWidgets('Save suggests a timestamped .md file name', (tester) async {
+    await pumpApp(tester);
+    await tester.enterText(find.byType(TextField), sample);
+
+    await tester.tap(find.byTooltip('Save'));
+    await tester.pumpAndSettle();
+
+    expect(picker.savedFileName, matches(RegExp(r'^ghostmark-[\d-]+\.md$')));
   });
 
   testWidgets('Open into an empty editor loads non-ASCII text', (tester) async {

@@ -13,3 +13,13 @@ String decodeMarkdown(Uint8List bytes) {
   final content = utf8.decode(bytes);
   return content.startsWith(_byteOrderMark) ? content.substring(1) : content;
 }
+
+/// Suggested name for a saved file, unique to the second.
+///
+/// Android's save dialog renames a duplicate `x.md` to `x.md (1)`, which drops
+/// the `.md` extension, so a fixed name can't be reused.
+String defaultSaveFileName(DateTime now) {
+  String two(int n) => n.toString().padLeft(2, '0');
+  return 'ghostmark-${now.year}-${two(now.month)}-${two(now.day)}-'
+      '${two(now.hour)}${two(now.minute)}${two(now.second)}.md';
+}

@@ -90,6 +90,7 @@ class EditorScreen extends HookConsumerWidget {
     Future<void> saveFile(BuildContext context) async {
       final messenger = ScaffoldMessenger.of(context);
       final result = await FilePicker.platform.saveFile(
+        fileName: defaultSaveFileName(DateTime.now()),
         bytes: encodeMarkdown(contentController.text),
         allowedExtensions: ['md'],
       );
