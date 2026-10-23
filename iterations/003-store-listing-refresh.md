@@ -65,17 +65,31 @@ Not yet released. Owner steps, in order:
 3. Merge the PR.
 4. Upload `ghost_mark/build/app/outputs/bundle/release/app-release.aab` (1.2.1+6) with the Version 6 notes from `INFO.md`.
 5. Store presence → Main store listing: replace the short description, full description and phone screenshots with the ones from `INFO.md` and `Design/Store/Screenshots/1.2.1/`, in order. Leave the title, icon and feature graphic as they are.
-6. Optional experiment, only if Play's experiment setup estimates a result within about 6 weeks: Store listing experiments → default graphics, variant = new screenshots, metric = retained first-time installers. Otherwise skip it.
+6. Skip the store listing experiment: the baseline shows 24 visitors in 28 days, too few to reach a result.
 7. Once both are live, tell Claude: tag `v1.2.1` and mark this record released.
 
 ## Results
 - Fact: the save bug is fixed and verified on an emulator. On the emulator, 1.2.0's Save suggested `null.plain`, which GhostMark can't reopen. Inference: every version since Save shipped (1.1.0) behaves the same on other Android devices, because the app never passed a file name. How many users this affected is unknown.
 - Fact: the listing assets and copy now match the app as of 1.2.1.
-- Baseline: not yet recorded (owner, step 1).
+- Baseline (Play Console, provided by the owner on 2026-10-23, before any listing change). Listing data covers Sep 22–Oct 19 and install events cover Sep 25–Oct 22, 2026, so the baseline covers 1.1.x plus only the first days of 1.2.0.
+
+  | Metric | Last 28 days |
+  |---|---|
+  | Store listing visitors | 24 |
+  | Store listing acquisitions / unique install clicks | 9 |
+  | Install-button click-through rate | 37.5% |
+  | Default listing conversion rate | 16.7% |
+  | Install events | 6 |
+  | Uninstall events | 10 |
+  | Net install events | −4 |
+  | Rating | 3.857 / 5 from 7 ratings; none new in 28 days |
+
+  Play reports 37.5% (9/24) and 16.7% as separate metrics; both are kept as given.
+- Interpretation (assumption, not proven): about 24 visitors a month is far too few for a store listing experiment, and too few for a before/after conversion change to be statistically meaningful. The comparison at the review date will be directional only. Uninstalls outnumbered installs, so existing users are leaving faster than new ones arrive. The cause is unknown, and nothing in this data ties it to the Save bug.
 - Unknown: the effect on conversion. It can't be measured until the new listing has been live for 28 days.
 
 ## Follow-up
-- **Metrics to monitor:** store listing conversion rate, 28 days after the new listing goes live vs the step 1 baseline; store listing visitors (to see whether traffic can support experiments); rating; uninstall rate; reviews mentioning saving or files.
+- **Metrics to monitor:** store listing visitors, acquisitions and conversion rate over the 28 days after the new listing goes live, vs the baseline above (24 / 9 / 37.5% click-through / 16.7% conversion); install and uninstall events (baseline 6 / 10); rating (3.857 from 7); reviews mentioning saving or files. Report absolute counts next to the rates, because at this volume one install moves the rate by several points.
 - **Review date:** 2026-11-23 (about 28 days after the expected listing update; update it if the listing goes live later). Iteration 001's review (2026-11-09) and 002's (2026-11-20) can use the same baseline.
 - **Risks and limitations:** before/after comparisons are noisy at low traffic, and seasonality or the 1.2.1 rollout can confound them. Users who already saved `null.plain` files can't open them in GhostMark; renaming the file to `.md` works. A second save within the same second would still hit Android's `(1)` renaming. The new screenshots will go stale with the next UI change; regenerate them with the script. Feature graphic and icon weren't reviewed.
-- **Ideas for future iterations:** let Open accept `text/plain` / any text file so existing `null.plain` files can be recovered; suggest a file name from the document's first heading; interactive preview (tick checkboxes, tappable links); undo for Clear/Open-replace; Play Console review mining once the baseline exists; localised listing (Spanish) if store analysis shows demand.
+- **Ideas for future iterations:** traffic, not conversion, looks like the bottleneck at 24 visitors a month: try store search optimisation (title and short-description keywords) and outside channels such as the GitHub README, Markdown communities or a blog post; look into why uninstalls exceed installs (Play Console uninstall timing, Android vitals); let Open accept `text/plain` / any text file so existing `null.plain` files can be recovered; suggest a file name from the document's first heading; interactive preview (tick checkboxes, tappable links); undo for Clear/Open-replace; Play Console review mining once the baseline exists; localised listing (Spanish) if store analysis shows demand.
