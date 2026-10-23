@@ -2,22 +2,32 @@
 GhostMark: Markdown Editor
 
 # Short description
-Clean and simple Markdown editor for focused mobile writing.
+Distraction-free Markdown editor with one-tap formatting and instant preview.
 
 # Full description
-GhostMark is a lightweight, distraction-free Markdown editor built for mobile devices. Whether you're jotting down quick notes or drafting full-length blog posts, GhostMark gives you a clean, focused environment to write anytime, anywhere.
+GhostMark is a clean, distraction-free Markdown editor for your phone. Write notes, drafts and to-do lists in plain Markdown, format them with one tap, and see the result instantly.
 
-Designed with simplicity in mind, GhostMark lets you focus on your words—not the tools around them. No clutter, no unnecessary features. Just you and your text.
+What you can do:
+• One-tap formatting – A toolbar right above the keyboard adds headings, bold, italic, bullet lists, checklists, links and code. No more hunting for # and * on the symbol keyboard. Select text first to format it, or start formatting right where you're typing.
+• Instant preview – Switch to View to see your document rendered, with headings, checklists, quotes and code blocks.
+• Open and save .md files – Open Markdown files from your device, and save your writing as standard .md files you can use in other Markdown apps.
+• Autosave – Everything is saved as you type.
+• Private and offline – No account, no sign-up, no cloud. Your writing stays on your device.
+• Minimal interface – Just your text and a toolbar. Nothing else gets in the way.
 
-✍️ Key Features:
-- Markdown Support – Write using familiar Markdown syntax with ease.
-- Mobile-First Design – Optimized for fast, responsive writing on small screens.
-- Autosave – Never lose your work; everything is saved as you type.
-- Simple Interface – A minimal UI that keeps you in the flow.
+Whether you're jotting down a quick note, keeping a checklist or drafting a blog post or README, GhostMark keeps you focused on the words, not the tools.
 
-Whether you're a technical writer, content creator, or casual note-taker, GhostMark helps you stay productive wherever you are.
+# Screenshots
+`Design/Store/Screenshots/1.2.1/`, in order: 1-editor, 2-toolbar, 3-preview, 4-open-save. Regenerate with `Design/Store/Tools/compose_screenshots.py`.
 
 # Release Notes
+
+## Version 6 (1.2.1)
+<en-US>
+GhostMark v1.2.1 – Better file names when saving
+- Fixed: Save now suggests a proper Markdown file name, like ghostmark-2026-10-23-110012.md. Before, Android suggested "null.plain", and files saved with that name couldn't be opened again in GhostMark.
+- Saving more than once no longer produces files without the .md extension.
+</en-US>
 
 ## Version 5 (1.2.0)
 <en-US>
