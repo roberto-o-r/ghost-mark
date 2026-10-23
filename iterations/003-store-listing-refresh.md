@@ -1,9 +1,9 @@
 # Iteration 003: Store listing refresh
 
 - **Date:** 2026-10-23 to 2026-10-23
-- **Status:** Completed, awaiting owner's Play Console baseline, 1.2.1 upload and listing update
+- **Status:** Completed and released
 - **Area:** growth (plus an engineering fix found during the work)
-- **PR / release:** [PR #7](https://github.com/roberto-o-r/ghost-mark/pull/7); app version 1.2.1+6
+- **PR / release:** [PR #7](https://github.com/roberto-o-r/ghost-mark/pull/7); app version 1.2.1+6, tag `v1.2.1`
 
 ## Context
 GhostMark 1.2.0+5 has been live on Google Play since 2026-10-16. Tests (28) pass and the analyzer is clean. The store page hasn't kept up with the app:
@@ -59,14 +59,16 @@ GhostMark 1.2.0+5 has been live on Google Play since 2026-10-16. Tests (28) pass
 - Observation, not explained: the profile APK grew from 72.6 MB to 89.5 MB between two builds in this session. The code change can't account for that, and the release bundle is what ships. If Play Console shows a download-size jump for 1.2.1, look at it then.
 
 ## Release
-Not yet released. Owner steps, in order:
-1. **Baseline (before changing anything):** in Play Console → Grow users → Store performance → Store analysis, last 28 days, note store listing visitors, store listing acquisitions and conversion rate. From Statistics, note average rating and daily installs/uninstalls. Paste them into the Results section below (or tell Claude).
-2. Optional: device-test 1.2.1 on the A059P with `flutter run -d <device>` (debug variant, keeps data). Tap Save twice and check both files end in `.md`.
-3. Merge the PR.
-4. Upload `ghost_mark/build/app/outputs/bundle/release/app-release.aab` (1.2.1+6) with the Version 6 notes from `INFO.md`.
-5. Store presence → Main store listing: replace the short description, full description and phone screenshots with the ones from `INFO.md` and `Design/Store/Screenshots/1.2.1/`, in order. Leave the title, icon and feature graphic as they are.
-6. Skip the store listing experiment: the baseline shows 24 visitors in 28 days, too few to reach a result.
-7. Once both are live, tell Claude: tag `v1.2.1` and mark this record released.
+Released 2026-10-23. The owner confirmed that 1.2.1+6 and the new store listing (description and the 4 screenshots) are live on Google Play. Tagged `v1.2.1` on `6b4bad8`. Steps taken:
+1. Done: owner recorded the Play Console baseline before any change (see Results).
+2. Not done: device test on the A059P (optional); the fix was verified on the emulator only.
+3. Done: PR #7 merged (squash).
+4. Done: owner uploaded the signed `app-release.aab` (1.2.1+6, upload key SHA-1 `39:5D:0B:7D…`) with the Version 6 notes.
+5. Done: owner replaced the short description, full description and phone screenshots.
+6. Skipped: store listing experiment (24 visitors in 28 days is too few).
+7. Done: tagged `v1.2.1`.
+
+Check: right after the owner's confirmation, the public Play web page (fetched 2026-10-23) still showed 1.2.0 and the old description, which is consistent with the usual lag before the web page updates. Re-check the public page at the review date.
 
 ## Results
 - Fact: the save bug is fixed and verified on an emulator. On the emulator, 1.2.0's Save suggested `null.plain`, which GhostMark can't reopen. Inference: every version since Save shipped (1.1.0) behaves the same on other Android devices, because the app never passed a file name. How many users this affected is unknown.
