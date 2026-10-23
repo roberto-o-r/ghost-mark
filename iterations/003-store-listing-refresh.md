@@ -3,7 +3,7 @@
 - **Date:** 2026-10-23 to 2026-10-23
 - **Status:** Completed, awaiting owner's Play Console baseline, 1.2.1 upload and listing update
 - **Area:** growth (plus an engineering fix found during the work)
-- **PR / release:** PR_PLACEHOLDER; app version 1.2.1+6
+- **PR / release:** [PR #7](https://github.com/roberto-o-r/ghost-mark/pull/7); app version 1.2.1+6
 
 ## Context
 GhostMark 1.2.0+5 has been live on Google Play since 2026-10-16. Tests (28) pass and the analyzer is clean. The store page hasn't kept up with the app:
