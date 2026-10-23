@@ -1,22 +1,25 @@
 # GhostMark
-GhostMark is a lightweight, open-source Markdown editor for mobile devices, designed to provide a seamless writing experience with direct publishing to WordPress.
+GhostMark is a lightweight, open-source Markdown editor for mobile devices, built for focused, distraction-free writing.
+
+[Get it on Google Play](https://play.google.com/store/apps/details?id=com.eunoia.ghost_mark)
 
 ## Features
-- Simple and clean Markdown editor
-- Minimalistic UI for distraction-free writing
-- Markdown rendering for preview
+- Simple and clean Markdown editor with autosave
+- One-tap formatting toolbar above the keyboard (headings, bold, italic, lists, checklists, links, code)
+- Instant preview of the rendered Markdown
+- Open and save `.md` files (UTF-8)
+- Local-only storage: no account, no cloud
 
 ## Tech Stack
 Frontend: Flutter (for cross-platform mobile development)
 
 ## Installation & Setup
-To get started with Modera development using Flutter, follow these steps:
+To get started with GhostMark development using Flutter, follow these steps:
 1. Clone the repository
-2. Install dependencies  
+2. Install dependencies (from the `ghost_mark/` folder)  
 Make sure you have Flutter installed on your machine.  
 `flutter pub get`
-3. Run the app
-For iOS (make sure you have Xcode installed):  
+3. Run the app on a connected device or emulator  
 `flutter run`
 
 ## Riverpod
