@@ -11,6 +11,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class FakeFilePicker extends FilePicker {
   String? pickedPath;
+  FileType? pickedType;
+  List<String>? pickedAllowedExtensions;
   Uint8List? savedBytes;
   String? savedFileName;
 
@@ -29,6 +31,8 @@ class FakeFilePicker extends FilePicker {
     bool lockParentWindow = false,
     bool readSequential = false,
   }) async {
+    pickedType = type;
+    pickedAllowedExtensions = allowedExtensions;
     final path = pickedPath;
     if (path == null) return null;
     return FilePickerResult([
@@ -67,8 +71,8 @@ void main() {
 
   tearDown(() => tempDir.deleteSync(recursive: true));
 
-  String writeFile(List<int> bytes) {
-    final file = File('${tempDir.path}/doc.md')..writeAsBytesSync(bytes);
+  String writeFile(List<int> bytes, {String name = 'doc.md'}) {
+    final file = File('${tempDir.path}/$name')..writeAsBytesSync(bytes);
     return file.path;
   }
 
@@ -119,6 +123,19 @@ void main() {
     expect(find.text('Replace Document'), findsNothing);
     expect(editorText(tester), sample);
   });
+
+  for (final fileName in ['null.plain', 'notes.txt', 'README']) {
+    testWidgets('Open loads UTF-8 text from $fileName', (tester) async {
+      picker.pickedPath = writeFile(utf8.encode(sample), name: fileName);
+      await pumpApp(tester);
+
+      await tapOpen(tester);
+
+      expect(picker.pickedType, FileType.any);
+      expect(picker.pickedAllowedExtensions, isNull);
+      expect(editorText(tester), sample);
+    });
+  }
 
   testWidgets('Open shows an error for a file that is not UTF-8',
       (tester) async {
