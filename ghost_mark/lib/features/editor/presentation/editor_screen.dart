@@ -60,8 +60,7 @@ class EditorScreen extends HookConsumerWidget {
 
     Future<void> openFile(BuildContext context) async {
       final messenger = ScaffoldMessenger.of(context);
-      final result = await FilePicker.platform
-          .pickFiles(type: FileType.custom, allowedExtensions: ['md']);
+      final result = await FilePicker.platform.pickFiles(type: FileType.any);
       final path = result?.files.single.path;
       if (path == null) return;
 

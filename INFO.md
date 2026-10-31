@@ -22,6 +22,13 @@ Whether you're jotting down a quick note, keeping a checklist or drafting a blog
 
 # Release Notes
 
+## Version 7 (1.2.2)
+<en-US>
+GhostMark v1.2.2 – Open more text files
+- New: Open now accepts any UTF-8 text file, including .txt, .plain, extensionless files and older files saved as null.plain.
+- Files that aren't valid UTF-8 text still show a clear error and leave your current document untouched.
+</en-US>
+
 ## Version 6 (1.2.1)
 <en-US>
 GhostMark v1.2.1 – Better file names when saving
