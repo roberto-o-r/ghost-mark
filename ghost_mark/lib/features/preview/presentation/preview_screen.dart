@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:ghost_mark/features/editor/application/document_notifier.dart';
+import 'package:ghost_mark/features/preview/presentation/navigable_markdown.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PreviewScreen extends HookConsumerWidget {
@@ -23,7 +23,7 @@ class PreviewScreen extends HookConsumerWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 2.0),
               ),
-              child: Markdown(data: content.value),
+              child: NavigableMarkdown(data: content.value),
             ),
           ),
         ],
