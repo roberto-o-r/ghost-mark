@@ -6,7 +6,7 @@ GhostMark is a lightweight, open-source Markdown editor for mobile devices, buil
 ## Features
 - Simple and clean Markdown editor with autosave
 - One-tap formatting toolbar above the keyboard (headings, bold, italic, lists, checklists, links, code)
-- Instant preview of the rendered Markdown
+- Selectable Markdown preview with working web links and heading navigation
 - Open UTF-8 text files and save standard `.md` files
 - Local-only storage: no account, no cloud
 

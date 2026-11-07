@@ -9,7 +9,7 @@ GhostMark is a clean, distraction-free Markdown editor for your phone. Write not
 
 What you can do:
 • One-tap formatting – A toolbar right above the keyboard adds headings, bold, italic, bullet lists, checklists, links and code. No more hunting for # and * on the symbol keyboard. Select text first to format it, or start formatting right where you're typing.
-• Instant preview – Switch to View to see your document rendered, with headings, checklists, quotes and code blocks.
+• Interactive preview – Switch to View to see your document rendered, select text, open web links and jump to headings within the document.
 • Open and save .md files – Open Markdown files from your device, and save your writing as standard .md files you can use in other Markdown apps.
 • Autosave – Everything is saved as you type.
 • Private and offline – No account, no sign-up, no cloud. Your writing stays on your device.
@@ -21,6 +21,13 @@ Whether you're jotting down a quick note, keeping a checklist or drafting a blog
 `Design/Store/Screenshots/1.2.1/`, in order: 1-editor, 2-toolbar, 3-preview, 4-open-save. Regenerate with `Design/Store/Tools/compose_screenshots.py`.
 
 # Release Notes
+
+## Version 8 (1.3.0)
+<en-US>
+GhostMark v1.3.0 – Navigate your preview
+- New: preview text is now selectable, so you can copy content from the rendered document.
+- Links now work in preview: web links open safely, and links such as #my-heading jump to that heading in your document.
+</en-US>
 
 ## Version 7 (1.2.2)
 <en-US>

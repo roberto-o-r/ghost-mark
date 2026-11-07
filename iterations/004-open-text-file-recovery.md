@@ -1,10 +1,10 @@
 # Iteration 004: Open text-file recovery
 
 - **Date:** 2026-10-31 to 2026-10-31
-- **Status:** In progress
+- **Status:** Completed and released
 - **Area:** engineering
 - **Version:** 1.2.2+7
-- **PR:** None
+- **PR:** [PR #9](https://github.com/roberto-o-r/ghost-mark/pull/9)
 
 ## Context
 GhostMark 1.2.1+6 has one autosaved document and can open UTF-8 Markdown through Android's file picker. Versions 1.1.0 through 1.2.0 could suggest `null.plain` when saving, but the current Open action filters for `.md`, so affected files are disabled in the picker. Strict UTF-8 decoding, replacement confirmation, and error messages already exist. The repository is clean, has no open issues or pull requests, and the most recent recorded validation is 30 passing tests with a clean analyzer.
@@ -30,7 +30,10 @@ GhostMark 1.2.1+6 has one autosaved document and can open UTF-8 Markdown through
 - Completed: README wording, 1.2.2+7 version, and Version 7 Play release notes.
 - Completed: debug APK and signed release bundle builds.
 - Not done: native Android file-picker test on a phone or emulator.
-- Awaiting authorization: commit, push, pull request, merge, and Google Play publication.
+- Completed: committed on `improvement/open-text-recovery`, opened PR #9, and squash-merged it to `main`.
+- Completed: uploaded the signed 1.2.2+7 bundle with the Version 7 notes and started a 100% production rollout in all targeted countries.
+- Completed: Google Play published version 7 (1.2.2) on 2026-10-31.
+- Not done: repository tag `v1.2.2`; create it only with explicit repository authorization.
 
 ## Validation
 - `flutter test`: 33/33 pass (30 existing + 3 recovery tests).
@@ -41,11 +44,12 @@ GhostMark 1.2.1+6 has one autosaved document and can open UTF-8 Markdown through
 - Bundle certificate SHA-1: `39:5D:0B:7D:B8:6C:91:52:7C:1C:4B:4D:85:67:9A:3E:66:CC:E1:A0`, matching the established Play upload key.
 - The temporary signing-config link used in the worktree was removed after the build.
 - Deviation: native picker behavior was not exercised because no device/emulator test was run.
+- Post-release check on 2026-11-06: Play shows 7 (1.2.2) as the active production release in 178 countries/regions, with no version-7 reviews and insufficient crash/ANR data.
 
 ## Results
 - Fact: widget tests load identical non-ASCII content from `.plain`, `.txt`, and extensionless files through the Open flow.
 - Fact: the test suite still rejects invalid UTF-8 and leaves the editor empty instead of replacing it.
-- Fact: the signed 1.2.2+7 Android bundle is ready for a device test and release review.
+- Fact: 1.2.2+7 is the active Google Play production release as of 2026-11-06.
 - Unknown: how many users have stranded `null.plain` files or will use non-`.md` inputs.
 
 ## Follow-up
