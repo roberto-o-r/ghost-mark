@@ -1,10 +1,10 @@
 # Iteration 005: Preview navigation and selection
 
-- **Date:** 2026-11-06 to In progress
-- **Status:** Implementation complete; awaiting repository authorization
+- **Date:** 2026-11-06 to 2026-11-07
+- **Status:** Completed, awaiting merge
 - **Area:** product
-- **Version:** 1.3.0+8 (planned)
-- **PR:** None
+- **Version:** 1.3.0+8
+- **PR:** [PR #10](https://github.com/roberto-o-r/ghost-mark/pull/10)
 
 ## Context
 GhostMark 1.2.2+7 is live on Google Play. The current preview renders Markdown but does not make text selectable and does not provide an `onTapLink` handler, so links look active but do nothing. A browser check reproduced the problem with an external link. The newest written review (4 stars, 2026-04-03) asks for anchor support. Baseline health is good: 33/33 tests pass, `flutter analyze` is clean, and the web release build succeeds. Play's latest 28-day overview shows 50 device impressions, 8 acquisitions, 2 first opens, 5 monthly active devices, and a 26.03% listing conversion rate; statistics show 8 acquisitions and 11 device losses. Traffic is too low to attribute product impact reliably.
@@ -36,7 +36,8 @@ GhostMark 1.2.2+7 is live on Google Play. The current preview renders Markdown b
 - Completed: validated the release web build hands-on in the integrated browser.
 - Completed: selected the opportunity and created this record.
 - Completed: reconciled iteration 004's record with its 2026-10-31 Play release.
-- Awaiting authorization: commit, push, pull request, merge, and Google Play publication.
+- Completed: committed the validated changes, pushed `improvement/preview-navigation`, and opened PR #10.
+- Awaiting authorization: merge and Google Play publication.
 
 ## Validation
 - Baseline before changes: `flutter test --no-pub` 33/33 passing; `flutter analyze --no-pub` clean; `flutter build web --release --no-pub` succeeded.
@@ -57,7 +58,7 @@ GhostMark 1.2.2+7 is live on Google Play. The current preview renders Markdown b
 - Fact: preview text is selectable in the browser release build.
 - Fact: internal links navigate to both unique and duplicate headings, and an HTTPS link opens in a new browser tab.
 - Fact: all 43 tests pass, the analyzer is clean, and web/Android release artifacts build successfully.
-- Fact: no repository or production action has been taken; the changes remain uncommitted in `improvement/preview-navigation` pending explicit authorization.
+- Fact: PR #10 contains the validated changes and is awaiting an authorized merge; no production action has been taken.
 - Assumption to test: preview navigation materially improves usefulness for long or reference-heavy documents.
 
 ## Follow-up
