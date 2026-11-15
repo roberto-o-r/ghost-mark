@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:ghost_mark/features/editor/application/document_notifier.dart';
 import 'package:ghost_mark/main.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,7 +37,11 @@ class FakeFilePicker extends FilePicker {
     final path = pickedPath;
     if (path == null) return null;
     return FilePickerResult([
-      PlatformFile(path: path, name: 'picked.md', size: File(path).lengthSync()),
+      PlatformFile(
+        path: path,
+        name: 'picked.md',
+        size: File(path).lengthSync(),
+      ),
     ]);
   }
 
@@ -63,7 +68,9 @@ void main() {
   late Directory tempDir;
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({
+      documentPrefsKey: jsonEncode({'content': ''}),
+    });
     picker = FakeFilePicker();
     FilePicker.platform = picker;
     tempDir = Directory.systemTemp.createTempSync('ghost_mark_test');
@@ -92,6 +99,59 @@ void main() {
 
   String editorText(WidgetTester tester) =>
       tester.widget<TextField>(find.byType(TextField)).controller!.text;
+
+  group('first launch', () {
+    testWidgets('shows an editable starter document on a fresh installation', (
+      tester,
+    ) async {
+      SharedPreferences.setMockInitialValues({});
+
+      await pumpApp(tester);
+
+      expect(editorText(tester), starterDocumentContent);
+      await tester.tap(find.text('View'));
+      await tester.pumpAndSettle();
+      expect(find.text('Welcome to GhostMark'), findsOneWidget);
+      expect(find.text('Quick tips'), findsOneWidget);
+    });
+
+    testWidgets('preserves an intentionally empty saved document', (
+      tester,
+    ) async {
+      await pumpApp(tester);
+
+      expect(editorText(tester), isEmpty);
+    });
+
+    testWidgets('preserves existing saved content', (tester) async {
+      SharedPreferences.setMockInitialValues({
+        documentPrefsKey: jsonEncode({'content': sample}),
+      });
+
+      await pumpApp(tester);
+
+      expect(editorText(tester), sample);
+    });
+
+    testWidgets('clearing the starter saves an intentionally empty document', (
+      tester,
+    ) async {
+      SharedPreferences.setMockInitialValues({});
+      await pumpApp(tester);
+
+      await tester.tap(find.byTooltip('Clear'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Clear'));
+      await tester.pumpAndSettle();
+
+      expect(editorText(tester), isEmpty);
+      final prefs = await SharedPreferences.getInstance();
+      expect(
+        jsonDecode(prefs.getString(documentPrefsKey)!)['content'],
+        isEmpty,
+      );
+    });
+  });
 
   testWidgets('Save writes non-ASCII text as UTF-8', (tester) async {
     await pumpApp(tester);
@@ -137,8 +197,9 @@ void main() {
     });
   }
 
-  testWidgets('Open shows an error for a file that is not UTF-8',
-      (tester) async {
+  testWidgets('Open shows an error for a file that is not UTF-8', (
+    tester,
+  ) async {
     picker.pickedPath = writeFile('Café'.codeUnits);
     await pumpApp(tester);
 
@@ -175,20 +236,20 @@ void main() {
     testWidgets('Bold wraps the selection and autosaves', (tester) async {
       await pumpApp(tester);
       await tester.enterText(find.byType(TextField), 'say hi');
-      controller(tester).selection =
-          const TextSelection(baseOffset: 4, extentOffset: 6);
+      controller(tester).selection = const TextSelection(
+        baseOffset: 4,
+        extentOffset: 6,
+      );
 
       await tester.tap(find.byTooltip('Bold'));
       await tester.pumpAndSettle();
 
       expect(editorText(tester), 'say **hi**');
       final prefs = await SharedPreferences.getInstance();
-      expect(jsonDecode(prefs.getString('document')!)['content'],
-          'say **hi**');
+      expect(jsonDecode(prefs.getString('document')!)['content'], 'say **hi**');
     });
 
-    testWidgets('keeps the editor focused so typing continues',
-        (tester) async {
+    testWidgets('keeps the editor focused so typing continues', (tester) async {
       await pumpApp(tester);
       await tester.enterText(find.byType(TextField), 'Title');
 
@@ -201,8 +262,9 @@ void main() {
       expect(controller(tester).selection.baseOffset, '# Title'.length);
     });
 
-    testWidgets('formats at the end when the editor was never focused',
-        (tester) async {
+    testWidgets('formats at the end when the editor was never focused', (
+      tester,
+    ) async {
       await pumpApp(tester);
 
       await tester.tap(find.byTooltip('Checklist'));
