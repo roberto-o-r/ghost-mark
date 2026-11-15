@@ -22,6 +22,13 @@ Whether you're jotting down a quick note, keeping a checklist or drafting a blog
 
 # Release Notes
 
+## Version 9 (1.4.0)
+<en-US>
+GhostMark v1.4.0 – Start writing faster
+- New installs now open with a short, editable Markdown example that introduces formatting, checklists, links, code, preview and autosave.
+- Existing documents and intentionally cleared editors are never replaced.
+</en-US>
+
 ## Version 8 (1.3.0)
 <en-US>
 GhostMark v1.3.0 – Navigate your preview

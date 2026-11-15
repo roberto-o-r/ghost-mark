@@ -1,7 +1,7 @@
 # Iteration 005: Preview navigation and selection
 
 - **Date:** 2026-11-06 to 2026-11-07
-- **Status:** Completed, awaiting merge
+- **Status:** Completed
 - **Area:** product
 - **Version:** 1.3.0+8
 - **PR:** [PR #10](https://github.com/roberto-o-r/ghost-mark/pull/10)
@@ -37,7 +37,7 @@ GhostMark 1.2.2+7 is live on Google Play. The current preview renders Markdown b
 - Completed: selected the opportunity and created this record.
 - Completed: reconciled iteration 004's record with its 2026-10-31 Play release.
 - Completed: committed the validated changes, pushed `improvement/preview-navigation`, and opened PR #10.
-- Awaiting authorization: merge and Google Play publication.
+- Completed: PR #10 was merged to `main` as `2834604`, and 1.3.0+8 was released to Google Play at 100% rollout on 2026-11-07.
 
 ## Validation
 - Baseline before changes: `flutter test --no-pub` 33/33 passing; `flutter analyze --no-pub` clean; `flutter build web --release --no-pub` succeeded.
@@ -58,7 +58,7 @@ GhostMark 1.2.2+7 is live on Google Play. The current preview renders Markdown b
 - Fact: preview text is selectable in the browser release build.
 - Fact: internal links navigate to both unique and duplicate headings, and an HTTPS link opens in a new browser tab.
 - Fact: all 43 tests pass, the analyzer is clean, and web/Android release artifacts build successfully.
-- Fact: PR #10 contains the validated changes and is awaiting an authorized merge; no production action has been taken.
+- Fact: PR #10 was merged and 1.3.0+8 was released to Google Play at 100% rollout on 2026-11-07.
 - Assumption to test: preview navigation materially improves usefulness for long or reference-heavy documents.
 
 ## Follow-up
