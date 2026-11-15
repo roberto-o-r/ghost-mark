@@ -1,10 +1,10 @@
 # Iteration 006: First-launch starter document
 
-- **Date:** 2026-11-14 to in progress
-- **Status:** In progress
+- **Date:** 2026-11-14 to 2026-11-14
+- **Status:** Completed, awaiting merge
 - **Area:** product
 - **Version:** 1.4.0+9 (planned)
-- **PR:** None
+- **PR:** [PR #11](https://github.com/roberto-o-r/ghost-mark/pull/11)
 
 ## Context
 GhostMark 1.3.0+8 is live on Google Play and its 43 tests pass with a clean analyzer. The last 28 days show 47 device impressions, 9 device acquisitions, 1 first open, and 5 monthly active devices. These small counts do not prove an onboarding problem, but a code review found that a new installation opens to a completely blank editor despite the app now having formatting, preview, link, file, and autosave features. The overdue review of iteration 001 found no new file-integrity complaints; traffic remains too low for causal attribution.
@@ -36,7 +36,8 @@ GhostMark 1.3.0+8 is live on Google Play and its 43 tests pass with a clean anal
 - Completed: built the web release, Android debug APK, and signed Android release bundle.
 - Completed: validated the release web build hands-on in the integrated browser.
 - Completed: added the requested Modera-style feedback-system PBI to `BACKLOG.md` without expanding this iteration's implementation scope.
-- Awaiting authorization: commit, push, and pull request.
+- Completed: committed the validated work as `07de243`, pushed `improvement/first-launch-starter`, and opened PR #11.
+- Awaiting authorization: merge.
 - Not authorized: merge, tag, or Google Play publication.
 
 ## Validation
@@ -58,6 +59,7 @@ GhostMark 1.3.0+8 is live on Google Play and its 43 tests pass with a clean anal
 - Fact: all 47 tests pass, the analyzer is clean, and web/Android release artifacts build successfully.
 - Fact: browser validation confirmed fresh-launch rendering and returning-user persistence.
 - Fact: the requested feedback-system PBI is recorded in `BACKLOG.md` with its privacy, form, persistence, rating, testing, and mobile-handoff requirements.
+- Fact: PR #11 contains the validated 1.4.0+9 changes and is awaiting an authorized merge.
 - Hypothesis to test: an editable sample improves early feature discovery and activation.
 
 ## Follow-up
