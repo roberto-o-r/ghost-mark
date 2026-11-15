@@ -1,9 +1,9 @@
 # Iteration 006: First-launch starter document
 
 - **Date:** 2026-11-14 to 2026-11-14
-- **Status:** Completed, awaiting merge
+- **Status:** Completed
 - **Area:** product
-- **Version:** 1.4.0+9 (planned)
+- **Version:** 1.4.0+9
 - **PR:** [PR #11](https://github.com/roberto-o-r/ghost-mark/pull/11)
 
 ## Context
@@ -36,9 +36,10 @@ GhostMark 1.3.0+8 is live on Google Play and its 43 tests pass with a clean anal
 - Completed: built the web release, Android debug APK, and signed Android release bundle.
 - Completed: validated the release web build hands-on in the integrated browser.
 - Completed: added the requested Modera-style feedback-system PBI to `BACKLOG.md` without expanding this iteration's implementation scope.
-- Completed: committed the validated work as `07de243`, pushed `improvement/first-launch-starter`, and opened PR #11.
-- Awaiting authorization: merge.
-- Not authorized: merge, tag, or Google Play publication.
+- Completed: committed the validated work, pushed `improvement/first-launch-starter`, and opened PR #11.
+- Completed: squash-merged PR #11 into `main` as `f77716e` on 2026-11-14.
+- Completed: uploaded the signed 1.4.0+9 app bundle to Google Play Production with the Version 9 notes and a 100% rollout to all targeted countries.
+- Completed: submitted the production change to Google for review on 2026-11-14. Play showed `Changes in review` while its quick checks were still running; managed publishing is off, so rollout starts automatically after approval.
 
 ## Validation
 - Baseline before changes: `flutter analyze --no-pub` was clean and `flutter test --no-pub` passed 43/43 tests.
@@ -52,6 +53,8 @@ GhostMark 1.3.0+8 is live on Google Play and its 43 tests pass with a clean anal
 - Integrated-browser release-build validation: confirmed the starter appears on a fresh profile, renders correctly in View, remains editable, autosaves an edited document, and restores that edit after a browser reload.
 - The temporary signing-config link used by the isolated worktree was removed after the build.
 - Deviation: the isolated worktree could not resolve packages through the restricted network, so it reused the existing project's resolved package metadata. The lockfile and dependency declarations were unchanged.
+- Release verification: Play accepted app bundle 9 (1.4.0), reported no newly unsupported devices, showed a 9.17 MB new-install download and 456 KB update, and accepted the full-rollout submission for review.
+- Deviation: public release was an explicit follow-on authorization after the initially selected implementation scope; Play review is external and was still pending at closeout, so the version was submitted but not yet live.
 
 ## Results
 - Fact: option 1 was selected on 2026-11-14.
@@ -59,11 +62,13 @@ GhostMark 1.3.0+8 is live on Google Play and its 43 tests pass with a clean anal
 - Fact: all 47 tests pass, the analyzer is clean, and web/Android release artifacts build successfully.
 - Fact: browser validation confirmed fresh-launch rendering and returning-user persistence.
 - Fact: the requested feedback-system PBI is recorded in `BACKLOG.md` with its privacy, form, persistence, rating, testing, and mobile-handoff requirements.
-- Fact: PR #11 contains the validated 1.4.0+9 changes and is awaiting an authorized merge.
+- Fact: PR #11 was merged into `main` as `f77716e`.
+- Fact: Google Play accepted 1.4.0+9 for Production at 100% rollout and showed the change under `Changes in review` on 2026-11-14.
+- Fact: 1.4.0+9 was not yet live at closeout because Play's quick checks and review were pending.
 - Hypothesis to test: an editable sample improves early feature discovery and activation.
 
 ## Follow-up
 - **Metrics to monitor:** device first opens, monthly active devices, and new reviews mentioning usability or onboarding; counts must accompany rates because traffic is low.
-- **Review date:** To be set from the actual release date.
-- **Risks and limitations:** Play traffic is too low for reliable attribution; a starter document can feel like clutter despite being concise; browser validation cannot measure long-term retention; Flutter reports that `file_picker` and `shared_preferences_android` still apply the Kotlin Gradle Plugin and will eventually need dependency upgrades for a future Flutter toolchain.
+- **Review date:** 2026-12-12; if Play approval materially delays publication, interpret this as the first review and schedule another 28 days after the actual live date.
+- **Risks and limitations:** Play review and live availability were pending at closeout; Play traffic is too low for reliable attribution; a starter document can feel like clutter despite being concise; browser validation cannot measure long-term retention; Flutter reports that `file_picker` and `shared_preferences_android` still apply the Kotlin Gradle Plugin and will eventually need dependency upgrades for a future Flutter toolchain.
 - **Ideas for future iterations:** Modera-style feedback system (specified in `BACKLOG.md`); typography improvements; mathematical notation; Android edge-to-edge and image optimization; ASO/search-discovery work after the listing review period.
