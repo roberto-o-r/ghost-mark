@@ -4,7 +4,7 @@
 - **Status:** In progress
 - **Area:** engineering / reliability
 - **Version:** 1.4.1+10
-- **PR:** None
+- **PR:** https://github.com/roberto-o-r/ghost-mark/pull/12
 
 ## Context
 GhostMark 1.4.0+9 displayed a gray editor body on a physical Android phone even after app storage was cleared. A clean Android-emulator reproduction exposed `PlatformException(channel-error)` for `shared_preferences_android.SharedPreferencesApi.getAll`. The 1.4.0 Play bundle had been built from a worktree that reused generated dependency metadata and used `--no-pub`; its ignored Android `GeneratedPluginRegistrant.java` was absent, so Shared Preferences, File Picker and URL Launcher were not registered in the app. The source code and saved document were not the cause.
@@ -30,7 +30,7 @@ GhostMark 1.4.0+9 displayed a gray editor body on a physical Android phone even 
 - Completed: bumped the app to 1.4.1+10 and prepared Play release notes.
 - Completed: built the signed release bundle and release APK from a cleanly initialized worktree.
 - Completed: installed the corrected release on a clean Android emulator and validated startup, Open and Save.
-- In progress: commit, push, PR, merge and expedited Play publication.
+- In progress: merge and expedited Play publication.
 
 ## Validation
 - `flutter analyze --no-pub`: passed with no issues.
