@@ -1,7 +1,7 @@
 # Iteration 007: Android plugin registration hotfix
 
-- **Date:** 2026-11-19 to in progress
-- **Status:** In progress
+- **Date:** 2026-11-19
+- **Status:** Complete — submitted to Google Play review
 - **Area:** engineering / reliability
 - **Version:** 1.4.1+10
 - **PR:** https://github.com/roberto-o-r/ghost-mark/pull/12
@@ -30,7 +30,8 @@ GhostMark 1.4.0+9 displayed a gray editor body on a physical Android phone even 
 - Completed: bumped the app to 1.4.1+10 and prepared Play release notes.
 - Completed: built the signed release bundle and release APK from a cleanly initialized worktree.
 - Completed: installed the corrected release on a clean Android emulator and validated startup, Open and Save.
-- In progress: merge and expedited Play publication.
+- Completed: merged PR #12 into `main`.
+- Completed: uploaded version 10 (1.4.1), configured a 100% production rollout, and submitted the change to Google Play review.
 
 ## Validation
 - `flutter analyze --no-pub`: passed with no issues.
@@ -47,10 +48,10 @@ GhostMark 1.4.0+9 displayed a gray editor body on a physical Android phone even 
 - Fact: clearing app storage does not resolve 1.4.0 because the failure is in the packaged native plugin registration.
 - Fact: a clean `flutter pub get` regenerates registrations for File Picker, Shared Preferences and URL Launcher.
 - Fact: the corrected 1.4.1 release restores the editor and native file actions on Android.
-- Fact: the validated Play artifact is ready for expedited publication but has not yet been submitted.
+- Fact: Google Play accepted version 10 (1.4.1) and shows the production change in review; full rollout will begin after approval because managed publishing is off.
 
 ## Follow-up
 - **Metrics to monitor:** Play crash/ANR signals and new feedback mentioning startup, gray screens, Open, Save or links.
-- **Review date:** 2026-11-26 if released.
+- **Review date:** 2026-11-26.
 - **Risks and limitations:** Play review timing is external; the issue is not represented as a standard Flutter crash because the app shell remains alive.
 - **Ideas for future iterations:** automated artifact smoke test in CI; Modera-style feedback system; iOS release.
