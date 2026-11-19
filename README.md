@@ -23,6 +23,20 @@ Make sure you have Flutter installed on your machine.
 3. Run the app on a connected device or emulator  
 `flutter run`
 
+## Android Release
+
+Build Android releases from a fully initialized worktree with:
+
+```bash
+./tool/build_android_release.sh
+```
+
+The script regenerates Flutter's Android plugin registrant, verifies that File
+Picker, Shared Preferences and URL Launcher are registered, runs analysis and
+tests, and then creates the release app bundle. Do not prepare a Play bundle by
+copying `.dart_tool`, `.flutter-plugins-dependencies`, or other generated files
+from another worktree and building with `--no-pub`.
+
 ## Riverpod
 Riverpod is configured to use code generation, run the following command to run code generation.
 ```bash

@@ -22,6 +22,13 @@ Whether you're jotting down a quick note, keeping a checklist or drafting a blog
 
 # Release Notes
 
+## Version 10 (1.4.1)
+<en-US>
+GhostMark v1.4.1 – Android startup fix
+- Fixed: Android could show a gray screen instead of the editor because required app components were missing from the release build.
+- Local documents, Open, Save and preview links now load normally again.
+</en-US>
+
 ## Version 9 (1.4.0)
 <en-US>
 GhostMark v1.4.0 – Start writing faster

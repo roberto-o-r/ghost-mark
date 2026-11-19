@@ -1,7 +1,7 @@
 name: ghost_mark
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.4.0+9
+version: 1.4.1+10
 
 environment:
   sdk: ^3.5.4
