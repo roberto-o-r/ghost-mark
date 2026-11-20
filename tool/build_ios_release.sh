@@ -5,4 +5,4 @@ cd "$repo_dir/ghost_mark"
 flutter pub get
 flutter analyze --no-pub
 flutter test --no-pub
-flutter build ipa --release --export-options-plist=ios/ExportOptions.plist --dart-define=IOS_APP_STORE_ID=6836976147
+flutter build ipa --release --build-number=13 --export-options-plist=ios/ExportOptions.plist --dart-define=IOS_APP_STORE_ID=6836976147

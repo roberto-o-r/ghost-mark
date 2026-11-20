@@ -51,7 +51,7 @@ With the existing Apple Distribution identity and `GhostMarkAppStore` profile in
 ./tool/build_ios_release.sh
 ```
 
-The script runs analysis/tests and exports an App Store IPA for `io.eunoialab.ghostmark`, embedding Apple app ID `6836976147` for ratings. Release signing uses the existing team/profile in `ios/ExportOptions.plist`; no signing secrets belong in the repository. Submit through Xcode Organizer and App Store Connect. Public release is manual after review approval.
+The script runs analysis/tests and exports iOS build 13 as an App Store IPA for `io.eunoialab.ghostmark`, embedding Apple app ID `6836976147` for ratings. Release signing uses the existing team/profile in `ios/ExportOptions.plist`; no signing secrets belong in the repository. iOS uses CocoaPods to select only the file-picker document APIs; unused photo/camera/audio pickers are excluded. This is a temporary fallback because the plugin’s Swift package enables media unconditionally. Submit through Xcode Organizer and App Store Connect. Public release is manual after review approval.
 
 ## Riverpod
 Riverpod is configured to use code generation, run the following command to run code generation.

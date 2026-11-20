@@ -3,8 +3,8 @@
 - **Date:** 2026-11-19 to 2026-11-19
 - **Status:** In progress: Android submitted; signed iOS build uploaded; final Apple listing and submission underway
 - **Area:** product / research / engineering / distribution
-- **Version:** Android 1.5.0+12 submitted; iOS 1.5.0 (12) uploaded
-- **PR:** App PR authorized; being prepared. Privacy PR106: https://eunoiaorg.visualstudio.com/Eunoia/_git/Eunoia/pullrequest/106 (completed).
+- **Version:** Android 1.5.0+12 submitted; iOS 1.5.0 (13) uploaded;12 rejected during processing
+- **PR:** App PR14: https://github.com/roberto-o-r/ghost-mark/pull/14 (open, unmerged). Privacy PR106: https://eunoiaorg.visualstudio.com/Eunoia/_git/Eunoia/pullrequest/106 (completed).
 
 ## Context
 GhostMark is a local-only Flutter Markdown editor. Discovery verified Android1.4.1 active after its startup hotfix; latest28-day counts were9 device acquisitions,1 first open and6 monthly active devices. Five written reviews predated the recent releases. No open GitHub issues/PRs. The existing iOS runner had an example identity. The public GhostMark privacy link incorrectly redirected to Animalia.
@@ -34,8 +34,10 @@ Success/guardrails: only app name is prefilled; documents are never attached; fa
 - **Completed:** owner-approved Apple Full Access app record6836976147; Apple1.5.0 listing/keywords/support/copyright/no-login notes/manual release saved. Existing-certificate GhostMarkAppStore profile generated, expires2027-11-05. No new key/certificate.
 - **Completed:** refreshed profile downloaded, verified and installed; signed IPA exported and strict signature verification passed. Real Apple rating ID6836976147 embedded. Xcode reports GhostMark1.5.0(12) uploaded.
 - **Completed:** subtitle, Productivity category,4+ age rating and owner-selected No third-party content saved. Free pricing and147 territories excludingEU/mainland China saved; Mac/VisionPro disabled. Reviewer contact reuse approved.
-- **In progress:** final reviewer-contact persistence, build processing/attachment, privacy publication and App Review submission. Owner approved email/feedback collection disclosure for support/improvement, linked when email supplied, no tracking. Final Apple publication agreement pending. Native file/external handoffs remain unverified; manual public release follows approval.
-- **Approved, in progress:** commit/push/open app GitHub PR. Leave app PR unmerged; no tag.
+- **Completed:** review contact copied with owner approval and corrected format; final privacy accuracy/compliance declaration approved and responses published. Optional email is disclosed for support; feedback for support and qualitative app improvement (Apple Analytics category), linked when email provided, no tracking.
+- **Corrected:** Apple processing rejected iOS12 for missing photo/camera purpose strings from unused file-picker media dependencies. Switched this project to CocoaPods and disabled PICKER_MEDIA/PICKER_AUDIO, preserving PICKER_DOCUMENT. Signed iOS13 built, strict signature verified; DKImagePicker/DKPhotoGallery and photo/camera/location API references absent. Android12 unchanged. Xcode confirmed iOS13 uploaded; native iPhone regression passed after the dependency change.
+- **In progress:** processed build attachment and App Review submission. Native file/external handoffs remain unverified; manual public release follows approval.
+- **Completed:** committed, rebased onto origin/main, pushed and opened app GitHub PR14. App PR left unmerged; no tag. Release correction being added to the same PR.
 - **Completed:** final artifact fingerprints and iOS handoff saved; temporary Android signing config removed after builds. Task-started emulator/server cleanup performed when no longer needed.
 
 ## Validation
@@ -47,7 +49,7 @@ Success/guardrails: only app name is prefilled; documents are never attached; fa
 - Play submission proof: chat outputs/android-submitted-build12.jpg. Build12 review and quick checks remain external; submission is verified, approval/live rollout is not.
 
 ## Results
-Fact: feedback, rating and policy access are implemented and validated; policy is live; final Android build12 is submitted. Fact: signed Apple build12 uploaded and listing preparation resumed. Fact: app-source publication is approved and underway. No claim of feedback responses, retention gains, Apple submission or final Android public availability.
+Fact: feedback, rating and policy access are implemented and validated; policy is live; final Android build12 is submitted. Fact: Apple12 uploaded then rejected during processing; corrected13 built and uploaded. Privacy responses published. App source is in open PR14. No claim of feedback responses, retention gains, Apple submission or final Android public availability.
 
 ## Follow-up
 - **Metrics to monitor:** final Play review/rollout, startup/file/link complaints, absolute feedback and rating counts; monthly active devices. No tracking SDK or recurring monitor added.
