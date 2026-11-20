@@ -11,6 +11,12 @@ GhostMark is a lightweight, open-source Markdown editor for mobile devices, buil
 - Open UTF-8 text files and save standard `.md` files
 - Local-only storage: no account, no cloud
 
+## Feedback
+
+Use **More options → Share feedback** from Edit or View. The optional web form receives only the app name; document content is never attached. A dismissible invitation appears after 14 calendar days from first use of this feature, and stays hidden while the keyboard is open. **Rate GhostMark** opens the listing for the current platform once available.
+
+The menu also links to the [GhostMark privacy policy](https://eunoialab.io/privacy/ghostmark).
+
 ## Tech Stack
 Frontend: Flutter (for cross-platform mobile development)
 
@@ -36,6 +42,16 @@ Picker, Shared Preferences and URL Launcher are registered, runs analysis and
 tests, and then creates the release app bundle. Do not prepare a Play bundle by
 copying `.dart_tool`, `.flutter-plugins-dependencies`, or other generated files
 from another worktree and building with `--no-pub`.
+
+## iOS Release
+
+With the existing Apple Distribution identity and `GhostMarkAppStore` profile installed:
+
+```bash
+./tool/build_ios_release.sh
+```
+
+The script runs analysis/tests and exports iOS build 13 as an App Store IPA for `io.eunoialab.ghostmark`, embedding Apple app ID `6836976147` for ratings. Release signing uses the existing team/profile in `ios/ExportOptions.plist`; no signing secrets belong in the repository. iOS uses CocoaPods to select only the file-picker document APIs; unused photo/camera/audio pickers are excluded. This is a temporary fallback because the plugin’s Swift package enables media unconditionally. Submit through Xcode Organizer and App Store Connect. Public release is manual after review approval.
 
 ## Riverpod
 Riverpod is configured to use code generation, run the following command to run code generation.

@@ -22,6 +22,14 @@ Whether you're jotting down a quick note, keeping a checklist or drafting a blog
 
 # Release Notes
 
+## Version 12 (1.5.0)
+<en-US>
+GhostMark 1.5.0 – Share your feedback
+- Share feedback, rate GhostMark or read the privacy policy from the menu.
+- An optional invitation appears after two weeks and stays dismissed after you close it.
+- Your document stays private; feedback opens separately in your browser.
+</en-US>
+
 ## Version 10 (1.4.1)
 <en-US>
 GhostMark v1.4.1 – Android startup fix
