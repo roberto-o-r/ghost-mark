@@ -26,4 +26,16 @@ done
 echo "Android plugin registration verified."
 flutter analyze --no-pub
 flutter test --no-pub
-flutter build appbundle --release --no-pub
+# Let the build refresh plugin registration for release mode. A preceding
+# integration test can leave debug-only plugins in generated registration.
+flutter build appbundle --release
+if grep -Fq 'IntegrationTestPlugin' "$registrant"; then
+  echo "Release registrant still contains the debug integration-test plugin." >&2
+  exit 1
+fi
+for plugin in FilePickerPlugin SharedPreferencesPlugin UrlLauncherPlugin; do
+  if ! grep -Fq "$plugin" "$registrant"; then
+    echo "Release registrant is missing required plugin: $plugin" >&2
+    exit 1
+  fi
+done

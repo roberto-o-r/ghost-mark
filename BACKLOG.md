@@ -2,7 +2,7 @@
 
 ## PBI: Replicate Modera's privacy-preserving feedback system
 
-- **Status:** Proposed
+- **Status:** Implemented in iteration 008; Android 1.5.0+12 submitted. iOS 1.5.0 (12) uploaded; submission underway.
 - **Area:** Product / feedback
 - **Goal:** Give GhostMark users an easy, always-available way to share anonymous feedback or rate the app without adding tracking or sending document data.
 - **Reference:** Adapt Modera's feedback channel from `iterations/004-feedback-channel.md`, including its shared Google Form, pre-filled app name, persistent dismissal, delayed prompt, and store-rating action.

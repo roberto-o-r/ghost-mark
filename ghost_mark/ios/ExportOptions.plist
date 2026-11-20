@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>destination</key>
+	<string>export</string>
+	<key>manageAppVersionAndBuildNumber</key>
+	<false/>
+	<key>method</key>
+	<string>app-store-connect</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>io.eunoialab.ghostmark</key>
+		<string>GhostMarkAppStore</string>
+	</dict>
+	<key>signingCertificate</key>
+	<string>7696C1E641135ACE186F094AB9863598B5A893E3</string>
+	<key>signingStyle</key>
+	<string>manual</string>
+	<key>teamID</key>
+	<string>NLAN3LN2D8</string>
+	<key>uploadSymbols</key>
+	<true/>
+</dict>
+</plist>
